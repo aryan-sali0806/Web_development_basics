@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vertical Box — Fixed Background (Simple)</title>
+<style>
+  :root { --box-width: 420px; }
+
+  body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: #111; /* page bg so outer area isn't weird */
+    display: flex; 
+    justify-content: center;
+    padding: 40px 200px;
+    min-height: 100vh; /* make page scrollable to demo effect */
+  }
+
+  /* the vertical box */
+  .vertical-box {
+    width: var(--box-width);
+    height: 80vh;            /* tall vertical box */
+    overflow: auto;         /* content can scroll inside the box */
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    
+    /* fixed background that does NOT move when page scrolls */
+    background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s='); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 24px;
+    backdrop-filter: blur(0.4px);
+  }
+
+  /* make the text readable over image */
+  .overlay {
+    background: linear-gradient(to bottom right, rgba(0,30,60,0.45), rgba(0,0,0,0.55));
+    height: 100%;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  h1 { margin: 0 0 12px; font-size: 20px; }
+  p { line-height: 1.45; margin: 0 0 12px; }
+</style>
+</head>
+<body>
+
+  <div class="vertical-box" aria-label="vertical box with fixed background">
+    <div class="overlay">
+      <h1>Fixed-background vertical box</h1>
+      <!-- lots of content to make inner scroll happen -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>Scroll inside this box — the background image stays fixed relative to the viewport.</p>
+      <p>Repeat text to create vertical scroll inside the box...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, illum.</p>
+      <p>End of content.</p>
+    </div>
+  </div>
+
+  
+
+</body>
+</html>
